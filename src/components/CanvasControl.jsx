@@ -54,13 +54,13 @@ const CanvasControl = ({
             {/* Undo/Redo buttons */}
             <button
               onClick={undo}
-              className="bg-gray-500 text-white rounded px-4 py-2"
+              className="bg-red-500 text-white rounded px-4 py-2"
             >
               Undo
             </button>
             <button
               onClick={redo}
-              className="bg-gray-500 text-white rounded px-4 py-2"
+              className="bg-blue-500 text-white rounded px-4 py-2"
             >
               Redo
             </button>
@@ -68,14 +68,14 @@ const CanvasControl = ({
             {/* Layer controls */}
             <button
               onClick={() => changeLayerOrder("forward")}
-              className="bg-green-500 text-white rounded px-4 py-2"
+              className="bg-gray-500 text-white rounded px-4 py-2"
               disabled={!selectedId}
             >
               Bring Forward
             </button>
             <button
               onClick={() => changeLayerOrder("backward")}
-              className="bg-green-500 text-white rounded px-4 py-2"
+              className="bg-gray-500 text-white rounded px-4 py-2"
               disabled={!selectedId}
             >
               Send Backward
@@ -141,8 +141,8 @@ const CanvasControl = ({
           {/* Canvas */}
           <Stage
             ref={stageRef}
-            width={window.innerWidth * 0.8}
-            height={400}
+            width={window.innerWidth * 0.9}
+            height={500}
             onMouseDown={checkDeselect}
             onTouchStart={checkDeselect}
             className="bg-gray-100"

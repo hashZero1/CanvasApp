@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef} from "react";
 import { Stage, Layer, Image, Transformer, Text } from "react-konva";
 import image1 from '../assets/image.webp'
+import video1 from '../assets/video.mp4'
 import { useHistory } from "../Hooks/useHistory";
 import CanvasControl from "./CanvasControl";
 
@@ -145,7 +146,7 @@ const EditorWithVideo = () => {
 
     // Create a video element
     const videoEl = document.createElement("video");
-    videoEl.src = "https://www.youtube.com/watch?v=novnyCaa7To"; // This would be a video URL in reality
+    videoEl.src = video1; // This would be a video URL in reality
     videoEl.crossOrigin = "Anonymous";
     videoEl.muted = true;
     videoEl.width = 320;
