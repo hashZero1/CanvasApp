@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback} from "react";
 import { Stage, Layer, Image, Transformer, Text } from "react-konva";
 import image1 from '../assets/image.webp'
+import { useHistory } from "../Hooks/useHistory";
 
 
 // Main component
@@ -11,44 +12,6 @@ const EditorWithVideo = () => {
     selectedId: null,
   };
 
-  const useHistory = (initialState) => {
-    const [state, setState] = useState(initialState);
-    const [history, setHistory] = useState([initialState]);
-    const [pointer, setPointer] = useState(0);
-  
-    const push = useCallback(
-      (newState) => {
-        const newHistory = history.slice(0, pointer + 1);
-        newHistory.push(JSON.parse(JSON.stringify(newState)));
-        setHistory(newHistory);
-        setPointer(newHistory.length - 1);
-        setState(newState);
-      },
-      [history, pointer]
-    );
-  
-    const undo = useCallback(() => {
-      if (pointer > 0) {
-        setPointer(pointer - 1);
-        setState(history[pointer - 1]);
-        return true;
-      }
-      return false;
-    }, [history, pointer]);
-  
-    const redo = useCallback(() => {
-      if (pointer < history.length - 1) {
-        setPointer(pointer + 1);
-        setState(history[pointer + 1]);
-        return true;
-      }
-      return false;
-    }, [history, pointer]);
-  
-    return [state, push, undo, redo];
-  };
-
-  // History-enabled state
   const [editorState, updateState, undo, redo] = useHistory(initialState);
   const [inputText, setInputText] = useState("");
   const elementsRef = useRef({});
@@ -657,7 +620,7 @@ const EditorWithVideo = () => {
           )}
         </Layer>
       </Stage>
-      <div className="mt-4 max-w-6xl mx-auto text-center text-gray-700">
+      <div className="mt-4 max-w-6xl mx-auto text-center h-[60vh] text-gray-700">
         <h1> Transformer App</h1>
          <h2 className='text-2xl mt-5 tracking-wider'>
              Instructions
