@@ -1,10 +1,11 @@
 import React from 'react'
-import ImageTextManipulator from './ImageTextComponent'
+
+import EditorWithVideo from './ImageTextComponent'
 
 const MainComponent = () => {
   return (
     <div>
-        <ImageTextManipulator/>
+        <EditorWithVideo/>
         </div>
   )
 }
